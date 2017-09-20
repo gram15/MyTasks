@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.gram15.am.mytasks.data.DbContract;
+import com.gram15.am.mytasks.data.TaskService;
 import com.gram15.am.mytasks.views.DatePickerFragment;
 
 import java.util.Calendar;
@@ -68,7 +69,7 @@ public class NewTaskActivity  extends AppCompatActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_task, menu);
+        getMenuInflater().inflate(R.menu.menu_new_task, menu);
         return true;
     }
 
@@ -136,7 +137,7 @@ public class NewTaskActivity  extends AppCompatActivity implements
         values.put(DbContract.TaskColumns.IS_COMPLETE, 0);
         values.put(DbContract.TaskColumns.DUE_DATE, getDateSelection());
 
-        TaskUpdateService.insertNewTask(this, values);
+        TaskService.insertNewTask(this, values);
         finish();
     }
 
