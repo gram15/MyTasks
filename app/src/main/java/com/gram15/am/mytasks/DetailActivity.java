@@ -147,9 +147,11 @@ public class DetailActivity extends AppCompatActivity implements
         if(mCurrentTask!=null) {
             TaskTitleTextView detailTextDescription = (TaskTitleTextView) findViewById(R.id.tttv_description);
             ImageView detailPriority = (ImageView) findViewById(R.id.iv_detail_priority);
-            TextView detailTextDate = (TextView) findViewById(R.id.tv_detail_text_date);
+            TextView detailDueDate = (TextView) findViewById(R.id.tv_detail_text_date);
+            TextView detailsText = (TextView) findViewById(R.id.tv_detail_details);
 
             detailTextDescription.setText(mCurrentTask.mDescription);
+            detailsText.setText(mCurrentTask.mDetails);
 
             // default state
             int state = TaskTitleTextView.NORMAL;
@@ -171,10 +173,10 @@ public class DetailActivity extends AppCompatActivity implements
             }
 
             if (mCurrentTask.hasDueDate()) {
-                detailTextDate.setText(DateUtils.getRelativeTimeSpanString(this, mCurrentTask.mDueDateMillis));
+                detailDueDate.setText(DateUtils.getRelativeTimeSpanString(this, mCurrentTask.mDueDateMillis));
 
             } else {
-                detailTextDate.setText(R.string.date_empty);
+                detailDueDate.setText(R.string.date_empty);
             }
         }
 

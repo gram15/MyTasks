@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,53 +9,61 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin">
 
-    <RelativeLayout
-        android:id="@+id/rl_detail_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.gram15.am.mytasks.views.TaskTitleTextView
-            android:id="@+id/tttv_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textAppearance="?android:textAppearanceLarge"
-            tools:text="Call Mom" />
-
-        <ImageView
-            android:id="@+id/iv_detail_priority"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:contentDescription="@string/ct_dsc_priority"
-            tools:src="@drawable/ic_priority"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_detail_date"
-        android:layout_width="match_parent"
+    <com.gram15.am.mytasks.views.TaskTitleTextView
+        android:id="@+id/tttv_description"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:layout_below="@id/rl_detail_description">
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAppearance="?android:textAppearanceLarge"
+        tools:text="Call Mom"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_detail_label_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:text="@string/task_date"/>
+    <TextView
+        android:id="@+id/tv_detail_details"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tttv_description"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/tttv_description"
+        tools:text="Call Mom description blablabla blablabla blablabla blablabla blablabla"
+        android:maxLines="10"
+        android:ellipsize="end"/>
 
-        <TextView
-            android:id="@+id/tv_detail_text_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_toEndOf="@id/tv_detail_label_date"
-            android:textAppearance="?android:textAppearanceMedium"
-            tools:text="Not Set"/>
+    <TextView
+        android:id="@+id/tv_detail_text_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="01/01/2017"
+        app:layout_constraintLeft_toRightOf="@+id/iv_date"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_details" />
 
-    </RelativeLayout>
+    <ImageView
+        android:id="@+id/iv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_lock_idle_alarm"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_details"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/tttv_description" />
 
-</RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_detail_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_priority"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>
