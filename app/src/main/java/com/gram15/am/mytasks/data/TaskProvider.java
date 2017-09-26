@@ -149,8 +149,6 @@ public class TaskProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        //COMPLETED: Implement existing task update
-        //COMPLETED: Expected Uri: content://com.gram15.am.mytasks/tasks/{id}
         // Get access to the database (to update data to)
         final SQLiteDatabase db = mDbHelper.getWritableDatabase();
 

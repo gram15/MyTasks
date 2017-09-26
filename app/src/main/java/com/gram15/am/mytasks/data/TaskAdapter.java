@@ -34,6 +34,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         public TextView mDateView;
         public ImageView mPriorityView;
         public CheckBox mCompletedCheckBox;
+        public ImageView mAlarmView;
+        public TextView mDetailsView;
 
         public TaskHolder(View itemView) {
             super(itemView);
@@ -42,6 +44,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             mDateView = (TextView) itemView.findViewById(R.id.tv_date);
             mPriorityView = (ImageView) itemView.findViewById(R.id.iv_priority);
             mCompletedCheckBox = (CheckBox) itemView.findViewById(R.id.cb_completed);
+            mAlarmView = (ImageView) itemView.findViewById(R.id.iv_date);
+            mDetailsView = (TextView) itemView.findViewById(R.id.tv_description_detail);
 
             itemView.setOnClickListener(this);
             mCompletedCheckBox.setOnClickListener(this);
@@ -125,10 +129,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         if(task.hasDueDate()){
             holder.mDateView.setText(DateUtils.getRelativeTimeSpanString(mContext,task.mDueDateMillis));
             holder.mDateView.setVisibility(View.VISIBLE);
+            holder.mAlarmView.setVisibility(View.VISIBLE);
         }
         else{
             holder.mDateView.setText(R.string.date_blank);
             holder.mDateView.setVisibility(View.GONE);
+            holder.mAlarmView.setVisibility(View.GONE);
+        }
+
+        if(!task.mDetails.isEmpty()){
+            holder.mDetailsView.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.mDetailsView.setVisibility(View.GONE);
         }
     }
 

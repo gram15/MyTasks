@@ -26,34 +26,38 @@ public class Task {
     public final boolean mIsPriority;
     //Optional due date for the task
     public final long mDueDateMillis;
+    //Task details
+    public final String mDetails;
 
     /**
      * Creates a new Task from discrete items, does not set id
      */
-    public Task(String description, boolean isComplete, boolean isPriority, long dueDateMillis) {
+    public Task(String description,String details, boolean isComplete, boolean isPriority, long dueDateMillis) {
         this.mId = NO_ID; //Not set
         this.mDescription = description;
         this.mIsComplete = isComplete;
         this.mIsPriority = isPriority;
         this.mDueDateMillis = dueDateMillis;
+        this.mDetails = details;
     }
 
     /**
      * Creates a new Task from discrete items, sets id
      */
-    public Task(long id,String description, boolean isComplete, boolean isPriority, long dueDateMillis) {
+    public Task(long id,String description,String details, boolean isComplete, boolean isPriority, long dueDateMillis) {
         this.mId = id; //set id
         this.mDescription = description;
         this.mIsComplete = isComplete;
         this.mIsPriority = isPriority;
         this.mDueDateMillis = dueDateMillis;
+        this.mDetails = details;
     }
 
     /**
      * Creates a new Task with no due date
      */
-    public Task(String description, boolean isComplete, boolean isPriority) {
-        this(description, isComplete, isPriority, NO_DATE);
+    public Task(String description, String details, boolean isComplete, boolean isPriority) {
+        this(description, details, isComplete, isPriority, NO_DATE);
     }
 
     /**
@@ -65,6 +69,7 @@ public class Task {
         this.mIsComplete = getColumnInt(cursor, DbContract.TaskColumns.IS_COMPLETE) == 1;
         this.mIsPriority = getColumnInt(cursor, DbContract.TaskColumns.IS_PRIORITY) == 1;
         this.mDueDateMillis = getColumnLong(cursor, DbContract.TaskColumns.DUE_DATE);
+        this.mDetails = getColumnString(cursor, DbContract.TaskColumns.DETAILS);
     }
 
     /**

@@ -136,6 +136,8 @@ public class NewTaskActivity  extends AppCompatActivity implements
         values.put(DbContract.TaskColumns.IS_PRIORITY, mPrioritySelect.isChecked() ? 1 : 0);
         values.put(DbContract.TaskColumns.IS_COMPLETE, 0);
         values.put(DbContract.TaskColumns.DUE_DATE, getDateSelection());
+        // TODO // FIXME: 26/09/2017 
+        // /values.put(DbContract.TaskColumns.DETAILS, mDe.getText().toString());
 
         TaskService.insertNewTask(this, values);
         finish();

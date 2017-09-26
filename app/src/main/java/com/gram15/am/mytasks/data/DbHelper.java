@@ -17,13 +17,14 @@ public class DbHelper extends SQLiteOpenHelper {
         private static final int DATABASE_VERSION = 1;
 
         private static final String SQL_CREATE_TABLE_TASKS = String.format("CREATE TABLE %s"
-                        +" (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER)",
+                        +" (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER,%s TEXT )",
                 DbContract.TABLE_TASKS,
                 DbContract.TaskColumns._ID,
                 DbContract.TaskColumns.DESCRIPTION,
                 DbContract.TaskColumns.IS_COMPLETE,
                 DbContract.TaskColumns.IS_PRIORITY,
-                DbContract.TaskColumns.DUE_DATE
+                DbContract.TaskColumns.DUE_DATE,
+                DbContract.TaskColumns.DETAILS
         );
 
         private final Context mContext;
@@ -47,10 +48,11 @@ public class DbHelper extends SQLiteOpenHelper {
 
         private void loadDemoTask(SQLiteDatabase db) {
             ContentValues values = new ContentValues();
-            values.put(DbContract.TaskColumns.DESCRIPTION, mContext.getResources().getString(R.string.demo_task));
+            values.put(DbContract.TaskColumns.DESCRIPTION, mContext.getResources().getString(R.string.demo_task_description));
             values.put(DbContract.TaskColumns.IS_COMPLETE, 0);
             values.put(DbContract.TaskColumns.IS_PRIORITY, 1);
             values.put(DbContract.TaskColumns.DUE_DATE, Long.MAX_VALUE);
+            values.put(DbContract.TaskColumns.DETAILS, mContext.getResources().getString(R.string.demo_task_details));
 
             db.insertOrThrow(DbContract.TABLE_TASKS, null, values);
         }

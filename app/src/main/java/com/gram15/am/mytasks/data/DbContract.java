@@ -21,6 +21,8 @@ public class DbContract {
         public static final String IS_PRIORITY = "is_priority";
         //Completion date (can be null)
         public static final String DUE_DATE = "due_date";
+        //Task details
+        public static final String DETAILS = "details";
     }
 
     //Unique authority string for the content provider

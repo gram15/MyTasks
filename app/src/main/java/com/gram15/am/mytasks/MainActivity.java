@@ -201,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements
     /* Click events in RecyclerView items */
     @Override
     public void onItemClick(View v, int position) {
-        //COMPLETED: Handle list item click event
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         Uri currentTaskUri = ContentUris.withAppendedId(DbContract.CONTENT_URI, mAdapter.getItem(position).mId);
         intent.setData(currentTaskUri);
@@ -223,6 +222,7 @@ public class MainActivity extends AppCompatActivity implements
         values.put(DbContract.TaskColumns.IS_PRIORITY, task.mIsPriority);
         values.put(DbContract.TaskColumns.IS_COMPLETE, !task.mIsComplete);
         values.put(DbContract.TaskColumns.DUE_DATE, task.mDueDateMillis);
+        values.put(DbContract.TaskColumns.DETAILS, task.mDetails);
         TaskService.updateTask(this,uri, values);
 
     }

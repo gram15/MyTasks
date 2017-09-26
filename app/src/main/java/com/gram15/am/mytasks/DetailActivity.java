@@ -52,6 +52,7 @@ public class DetailActivity extends AppCompatActivity implements
             Long id = 0L;
             Long dueDate = 0L;
             String description = "";
+            String details = "";
             boolean isComplete = false;
             boolean isPriority = false;
             if (savedInstanceState.containsKey(DbContract.TaskColumns._ID) ) {
@@ -69,7 +70,11 @@ public class DetailActivity extends AppCompatActivity implements
             if (savedInstanceState.containsKey(DbContract.TaskColumns.IS_PRIORITY) ) {
                 isPriority = savedInstanceState.getBoolean(DbContract.TaskColumns.IS_PRIORITY);
             }
-            mCurrentTask = new Task(id,description,isComplete,isPriority,dueDate);
+            if (savedInstanceState.containsKey(DbContract.TaskColumns.DETAILS) ) {
+                details = savedInstanceState.getString(DbContract.TaskColumns.DETAILS);
+            }
+
+            mCurrentTask = new Task(id,description,details,isComplete,isPriority,dueDate);
             updateUI();
         }
         else{
@@ -107,7 +112,6 @@ public class DetailActivity extends AppCompatActivity implements
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        //COMPLETED: Handle date selection from a DatePickerFragment
         long dateForSchedulation = TaskUtils.addHourToDate(year,month,day,TaskUtils.Constants.DEFAULT_HOUR_OF_REMINDER);
 
         if(!TaskUtils.isDateOverdue(dateForSchedulation)){
@@ -202,6 +206,7 @@ public class DetailActivity extends AppCompatActivity implements
         outState.putLong(DbContract.TaskColumns.DUE_DATE, mCurrentTask.mDueDateMillis);
         outState.putBoolean(DbContract.TaskColumns.IS_COMPLETE, mCurrentTask.mIsComplete);
         outState.putBoolean(DbContract.TaskColumns.IS_PRIORITY, mCurrentTask.mIsPriority);
+        outState.putString(DbContract.TaskColumns.DETAILS, mCurrentTask.mDetails);
 
 
     }
