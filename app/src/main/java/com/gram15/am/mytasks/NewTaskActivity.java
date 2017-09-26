@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gram15.am.mytasks.data.DbContract;
@@ -33,9 +34,11 @@ public class NewTaskActivity  extends AppCompatActivity implements
     private long mDueDate = Long.MAX_VALUE;
 
     private TextInputEditText mDescriptionView;
+    private TextInputEditText mDetailsView;
     private SwitchCompat mPrioritySelect;
     private TextView mDueDateView;
     private static final String TASK_TITLE_KEY = "title_key";
+    private static final String TASK_DETAILS_KEY = "details_key";
     private static final String TASK_DATE_KEY = "date_key";
 
     @Override
@@ -50,13 +53,17 @@ public class NewTaskActivity  extends AppCompatActivity implements
         }
 
         mDescriptionView = (TextInputEditText) findViewById(R.id.tiet_input_description);
+        mDetailsView = (TextInputEditText) findViewById(R.id.tiet_input_details);
         mPrioritySelect = (SwitchCompat) findViewById(R.id.sc_priority);
         mDueDateView = (TextView) findViewById(R.id.tv_date);
-        View mSelectDate = findViewById(R.id.select_date);
+        View mSelectDate = findViewById(R.id.tv_date);
 
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(TASK_TITLE_KEY) ) {
                 mDescriptionView.setText(savedInstanceState.getString(TASK_TITLE_KEY));
+            }
+            if (savedInstanceState.containsKey(TASK_DETAILS_KEY) ) {
+                mDetailsView.setText(savedInstanceState.getString(TASK_DETAILS_KEY));
             }
             if (savedInstanceState.containsKey(TASK_DATE_KEY) ) {
                 setDateSelection(savedInstanceState.getLong(TASK_DATE_KEY));
@@ -136,8 +143,7 @@ public class NewTaskActivity  extends AppCompatActivity implements
         values.put(DbContract.TaskColumns.IS_PRIORITY, mPrioritySelect.isChecked() ? 1 : 0);
         values.put(DbContract.TaskColumns.IS_COMPLETE, 0);
         values.put(DbContract.TaskColumns.DUE_DATE, getDateSelection());
-        // TODO // FIXME: 26/09/2017 
-        // /values.put(DbContract.TaskColumns.DETAILS, mDe.getText().toString());
+        values.put(DbContract.TaskColumns.DETAILS, mDetailsView.getText().toString());
 
         TaskService.insertNewTask(this, values);
         finish();
@@ -147,6 +153,7 @@ public class NewTaskActivity  extends AppCompatActivity implements
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(TASK_TITLE_KEY, mDescriptionView.getText().toString());
+        outState.putString(TASK_DETAILS_KEY, mDetailsView.getText().toString());
         outState.putLong(TASK_DATE_KEY, getDateSelection());
 
     }

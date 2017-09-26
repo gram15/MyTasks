@@ -137,7 +137,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             holder.mAlarmView.setVisibility(View.GONE);
         }
 
+        // set details
         if(!task.mDetails.isEmpty()){
+            holder.mDetailsView.setText(task.mDetails);
             holder.mDetailsView.setVisibility(View.VISIBLE);
         }
         else {

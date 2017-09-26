@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MyTasks</string>
 <string name="task_description">What Needs to Get Done?</string>
+        <string name="task_details">Details</string>
         <string name="task_priority">Priority Task</string>
         <string name="task_date">Due Date</string>
         <string name="demo_task_description">Make a working demo</string>
