@@ -23,6 +23,8 @@ public class DbContract {
         public static final String DUE_DATE = "due_date";
         //Task details
         public static final String DETAILS = "details";
+        //Task details
+        public static final String PRIORITY_LEVEL = "priority_level";
     }
 
     //Unique authority string for the content provider

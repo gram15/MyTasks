@@ -28,36 +28,40 @@ public class Task {
     public final long mDueDateMillis;
     //Task details
     public final String mDetails;
+    //Marked if task is priority
+    public final int mPriorityLevel;
 
     /**
      * Creates a new Task from discrete items, does not set id
      */
-    public Task(String description,String details, boolean isComplete, boolean isPriority, long dueDateMillis) {
+    public Task(String description,String details, boolean isComplete, boolean isPriority, long dueDateMillis,int priorityLevel) {
         this.mId = NO_ID; //Not set
         this.mDescription = description;
         this.mIsComplete = isComplete;
         this.mIsPriority = isPriority;
         this.mDueDateMillis = dueDateMillis;
         this.mDetails = details;
+        this.mPriorityLevel = priorityLevel;
     }
 
     /**
      * Creates a new Task from discrete items, sets id
      */
-    public Task(long id,String description,String details, boolean isComplete, boolean isPriority, long dueDateMillis) {
+    public Task(long id,String description,String details, boolean isComplete, boolean isPriority, long dueDateMillis,int priorityLevel) {
         this.mId = id; //set id
         this.mDescription = description;
         this.mIsComplete = isComplete;
         this.mIsPriority = isPriority;
         this.mDueDateMillis = dueDateMillis;
         this.mDetails = details;
+        this.mPriorityLevel = priorityLevel;
     }
 
     /**
      * Creates a new Task with no due date
      */
-    public Task(String description, String details, boolean isComplete, boolean isPriority) {
-        this(description, details, isComplete, isPriority, NO_DATE);
+    public Task(String description, String details, boolean isComplete, boolean isPriority,int priorityLevel) {
+        this(description, details, isComplete, isPriority, NO_DATE,priorityLevel);
     }
 
     /**
@@ -70,6 +74,7 @@ public class Task {
         this.mIsPriority = getColumnInt(cursor, DbContract.TaskColumns.IS_PRIORITY) == 1;
         this.mDueDateMillis = getColumnLong(cursor, DbContract.TaskColumns.DUE_DATE);
         this.mDetails = getColumnString(cursor, DbContract.TaskColumns.DETAILS);
+        this.mPriorityLevel = getColumnInt(cursor,DbContract.TaskColumns.PRIORITY_LEVEL);
     }
 
     /**

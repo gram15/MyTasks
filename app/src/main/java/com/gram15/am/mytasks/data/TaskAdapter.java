@@ -120,10 +120,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         holder.mNameView.setState(state);
         // set priority
         if(task.mIsPriority){
-            holder.mPriorityView.setImageResource(R.drawable.ic_priority);
+            holder.mPriorityView.setImageResource(R.drawable.ic_priority_medium_selected);
         }
         else{
-            holder.mPriorityView.setImageResource(R.drawable.ic_not_priority);
+            holder.mPriorityView.setImageResource(R.drawable.ic_priority_medium);
         }
         // set due date
         if(task.hasDueDate()){

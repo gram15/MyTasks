@@ -55,6 +55,7 @@ public class DetailActivity extends AppCompatActivity implements
             String details = "";
             boolean isComplete = false;
             boolean isPriority = false;
+            int priorityLevel = TaskUtils.Constants.PRIORITY_lOW;
             if (savedInstanceState.containsKey(DbContract.TaskColumns._ID) ) {
                 id = savedInstanceState.getLong(DbContract.TaskColumns._ID);
             }
@@ -73,8 +74,11 @@ public class DetailActivity extends AppCompatActivity implements
             if (savedInstanceState.containsKey(DbContract.TaskColumns.DETAILS) ) {
                 details = savedInstanceState.getString(DbContract.TaskColumns.DETAILS);
             }
+            if (savedInstanceState.containsKey(DbContract.TaskColumns.PRIORITY_LEVEL) ) {
+                priorityLevel = savedInstanceState.getInt(DbContract.TaskColumns.PRIORITY_LEVEL);
+            }
 
-            mCurrentTask = new Task(id,description,details,isComplete,isPriority,dueDate);
+            mCurrentTask = new Task(id,description,details,isComplete,isPriority,dueDate,priorityLevel);
             updateUI();
         }
         else{
@@ -166,10 +170,14 @@ public class DetailActivity extends AppCompatActivity implements
             // set state
             detailTextDescription.setState(state);
 
-            if (mCurrentTask.mIsPriority) {
-                detailPriority.setImageResource(R.drawable.ic_priority);
-            } else {
-                detailPriority.setImageResource(R.drawable.ic_not_priority);
+            if (mCurrentTask.mPriorityLevel == TaskUtils.Constants.PRIORITY_HIGH) {
+                detailPriority.setImageResource(R.drawable.ic_priority_high_selected);
+            }
+            else if(mCurrentTask.mPriorityLevel == TaskUtils.Constants.PRIORITY_MEDIUM){
+                detailPriority.setImageResource(R.drawable.ic_priority_medium_selected);
+            }
+            else{
+                 detailPriority.setImageResource(R.drawable.ic_priority_low_selected);
             }
 
             if (mCurrentTask.hasDueDate()) {
@@ -209,6 +217,7 @@ public class DetailActivity extends AppCompatActivity implements
         outState.putBoolean(DbContract.TaskColumns.IS_COMPLETE, mCurrentTask.mIsComplete);
         outState.putBoolean(DbContract.TaskColumns.IS_PRIORITY, mCurrentTask.mIsPriority);
         outState.putString(DbContract.TaskColumns.DETAILS, mCurrentTask.mDetails);
+        outState.putInt(DbContract.TaskColumns.DETAILS, mCurrentTask.mPriorityLevel);
 
 
     }

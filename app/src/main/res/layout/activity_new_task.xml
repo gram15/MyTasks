@@ -59,15 +59,16 @@
         app:layout_constraintTop_toBottomOf="@+id/til_wrapper_details"/>
 
     <RadioGroup
+        android:id="@+id/radGroupPriority"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:checkedButton="@+id/radBtnHigh"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_priority"
-        android:checkedButton="@+id/radBtnHigh">
+        app:layout_constraintTop_toBottomOf="@+id/tv_priority">
 
         <RadioButton
             android:id="@+id/radBtnHigh"
@@ -99,23 +100,33 @@
 
 
     </RadioGroup>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clDueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radGroupPriority">
     <ImageView
         android:id="@+id/iv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_idle_alarm"
-        tools:layout_editor_absoluteY="206dp" />
+        app:srcCompat="@android:drawable/ic_menu_today"/>
 
 
-    <TextView
-        android:id="@+id/tv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textAppearance="?android:textAppearanceMedium"
-        app:layout_constraintLeft_toRightOf="@+id/iv_date"
-        tools:layout_editor_absoluteY="206dp"
-        tools:text="Not Set" />
-
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/iv_date"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Not Set" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
