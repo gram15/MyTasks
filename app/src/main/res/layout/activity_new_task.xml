@@ -27,19 +27,6 @@
 
 </android.support.design.widget.TextInputLayout>
 
-    <android.support.v7.widget.SwitchCompat
-        android:id="@+id/sc_priority"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_below="@id/til_wrapper_description"
-        android:text="@string/task_priority"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="?android:textColorSecondary"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/til_wrapper_details"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_wrapper_details"
         android:layout_width="300dp"
@@ -58,27 +45,88 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:textColor="@android:color/primary_text_light"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/task_priority"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_wrapper_details"/>
+
+    <RadioGroup
+        android:id="@+id/radGroupPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:checkedButton="@+id/radBtnHigh"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_priority">
+
+        <RadioButton
+            android:id="@+id/radBtnHigh"
+            android:button="@drawable/priority_high_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High"
+            android:layout_weight="1"
+            android:onClick="onPrioritySelected"/>
+
+        <RadioButton
+            android:id="@+id/radBtnMedium"
+            android:button="@drawable/priority_medium_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium"
+            android:layout_weight="1"
+            android:onClick="onPrioritySelected"
+            />
+
+        <RadioButton
+            android:id="@+id/radBtnLow"
+            android:button="@drawable/priority_low_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low"
+            android:layout_weight="1"
+            android:onClick="onPrioritySelected"/>
+
+
+    </RadioGroup>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clDueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radGroupPriority">
     <ImageView
         android:id="@+id/iv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_lock_idle_alarm"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/sc_priority"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_today"/>
 
 
-
-         <TextView
-             android:id="@+id/tv_date"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:textAppearance="?android:textAppearanceMedium"
-             tools:text="Not Set"
-             app:layout_constraintLeft_toRightOf="@+id/iv_date"
-             android:layout_marginLeft="8dp"
-             android:layout_marginTop="8dp"
-             app:layout_constraintTop_toBottomOf="@+id/sc_priority" />
-
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/iv_date"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Not Set" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

@@ -32,38 +32,44 @@
         android:maxLines="10"
         android:ellipsize="end"/>
 
-    <TextView
-        android:id="@+id/tv_detail_text_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="01/01/2017"
-        app:layout_constraintLeft_toRightOf="@+id/iv_date"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_details" />
-
-    <ImageView
-        android:id="@+id/iv_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_lock_idle_alarm"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_details"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/tttv_description" />
-
-
 
     <ImageView
         android:id="@+id/iv_detail_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_priority"
+        app:srcCompat="@drawable/ic_priority_medium_selected"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp" />
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clDueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_details">
+    <ImageView
+        android:id="@+id/iv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        app:srcCompat="@android:drawable/ic_menu_today"
+        android:layout_marginLeft="0dp" />
+
+        <TextView
+            android:id="@+id/tv_detail_text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toRightOf="@+id/iv_date"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="01/01/2017" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>
