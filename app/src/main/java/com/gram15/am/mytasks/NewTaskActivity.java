@@ -36,7 +36,6 @@ public class NewTaskActivity  extends AppCompatActivity implements
 
     private TextInputEditText mDescriptionView;
     private TextInputEditText mDetailsView;
-    private SwitchCompat mPrioritySelect;
     private int mPriority;
     private TextView mDueDateView;
     private static final String TASK_TITLE_KEY = "title_key";
@@ -146,7 +145,6 @@ public class NewTaskActivity  extends AppCompatActivity implements
         //Insert a new item
         ContentValues values = new ContentValues(4);
         values.put(DbContract.TaskColumns.DESCRIPTION, mDescriptionView.getText().toString());
-        values.put(DbContract.TaskColumns.IS_PRIORITY, mPrioritySelect.isChecked() ? 1 : 0);
         values.put(DbContract.TaskColumns.IS_COMPLETE, 0);
         values.put(DbContract.TaskColumns.DUE_DATE, getDateSelection());
         values.put(DbContract.TaskColumns.DETAILS, mDetailsView.getText().toString());

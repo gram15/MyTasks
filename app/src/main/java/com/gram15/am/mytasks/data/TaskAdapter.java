@@ -34,7 +34,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         public TextView mDateView;
         public ImageView mPriorityView;
         public CheckBox mCompletedCheckBox;
-        public ImageView mAlarmView;
+        //public ImageView mAlarmView;
         public TextView mDetailsView;
 
         public TaskHolder(View itemView) {
@@ -44,7 +44,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             mDateView = (TextView) itemView.findViewById(R.id.tv_date);
             mPriorityView = (ImageView) itemView.findViewById(R.id.iv_priority);
             mCompletedCheckBox = (CheckBox) itemView.findViewById(R.id.cb_completed);
-            mAlarmView = (ImageView) itemView.findViewById(R.id.iv_date);
+            //mAlarmView = (ImageView) itemView.findViewById(R.id.iv_date);
             mDetailsView = (TextView) itemView.findViewById(R.id.tv_description_detail);
 
             itemView.setOnClickListener(this);
@@ -119,22 +119,30 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         // set state
         holder.mNameView.setState(state);
         // set priority
-        if(task.mIsPriority){
-            holder.mPriorityView.setImageResource(R.drawable.ic_priority_medium_selected);
-        }
-        else{
-            holder.mPriorityView.setImageResource(R.drawable.ic_priority_medium);
+        switch (task.mPriorityLevel){
+
+            case TaskUtils.Constants.PRIORITY_HIGH:
+                holder.mPriorityView.setImageResource(R.drawable.ic_priority_high_selected);
+                break;
+            case TaskUtils.Constants.PRIORITY_MEDIUM:
+                holder.mPriorityView.setImageResource(R.drawable.ic_priority_medium_selected);
+                break;
+            case TaskUtils.Constants.PRIORITY_lOW:
+                holder.mPriorityView.setImageResource(R.drawable.ic_priority_low_selected);
+                break;
+             default:
+
         }
         // set due date
         if(task.hasDueDate()){
             holder.mDateView.setText(DateUtils.getRelativeTimeSpanString(mContext,task.mDueDateMillis));
             holder.mDateView.setVisibility(View.VISIBLE);
-            holder.mAlarmView.setVisibility(View.VISIBLE);
+            //holder.mAlarmView.setVisibility(View.VISIBLE);
         }
         else{
             holder.mDateView.setText(R.string.date_blank);
             holder.mDateView.setVisibility(View.GONE);
-            holder.mAlarmView.setVisibility(View.GONE);
+            //holder.mAlarmView.setVisibility(View.GONE);
         }
 
         // set details

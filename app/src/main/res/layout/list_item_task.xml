@@ -29,9 +29,8 @@
 
     <TextView
         android:id="@+id/tv_description_detail"
-        android:layout_width="280dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
@@ -43,7 +42,7 @@
         android:id="@+id/iv_priority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -53,20 +52,21 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_priority"
+        app:layout_constraintStart_toStartOf="@+id/iv_priority"
+        app:layout_constraintEnd_toEndOf="@+id/iv_priority"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_description_detail"
         tools:text="01/01/2017" />
 
-   <!-- <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintTop_toBottomOf="@id/tv_description_detail" />-->
+    <View
+         android:layout_width="match_parent"
+         android:layout_height="1dp"
+         android:layout_marginBottom="8dp"
+         android:layout_marginTop="8dp"
+         app:layout_constraintRight_toRightOf="parent"
+         android:background="@android:color/darker_gray"
+         app:layout_constraintTop_toBottomOf="@id/tv_description_detail" />
 
 </android.support.constraint.ConstraintLayout>
