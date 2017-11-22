@@ -170,11 +170,11 @@ public class NewTaskActivity  extends AppCompatActivity implements
      */
     public void onPrioritySelected(View view) {
         if (((RadioButton) findViewById(R.id.radBtnHigh)).isChecked()) {
-            mPriority = 1;
+            mPriority = TaskUtils.Constants.PRIORITY_HIGH;
         } else if (((RadioButton) findViewById(R.id.radBtnMedium)).isChecked()) {
-            mPriority = 2;
+            mPriority = TaskUtils.Constants.PRIORITY_MEDIUM;
         } else if (((RadioButton) findViewById(R.id.radBtnLow)).isChecked()) {
-            mPriority = 3;
+            mPriority =  TaskUtils.Constants.PRIORITY_lOW;
         }
     }
 }

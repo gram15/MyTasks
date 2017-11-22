@@ -12,9 +12,9 @@ public class TaskUtils {
 
     public class Constants{
         public final static int DEFAULT_HOUR_OF_REMINDER = 12;
-        public final static int PRIORITY_HIGH = 1;
+        public final static int PRIORITY_HIGH = 3;
         public final static int PRIORITY_MEDIUM= 2;
-        public final static int PRIORITY_lOW = 3;
+        public final static int PRIORITY_lOW = 1;
     }
     /**
      * This method compares date. Return true if current date is grater than param date, otherwase false

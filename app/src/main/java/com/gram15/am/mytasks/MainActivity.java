@@ -219,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements
         Uri uri = ContentUris.withAppendedId(DbContract.CONTENT_URI, task.mId);
         ContentValues values = new ContentValues(4);
         values.put(DbContract.TaskColumns.DESCRIPTION, task.mDescription);
-        values.put(DbContract.TaskColumns.IS_PRIORITY, task.mIsPriority);
         values.put(DbContract.TaskColumns.IS_COMPLETE, !task.mIsComplete);
         values.put(DbContract.TaskColumns.DUE_DATE, task.mDueDateMillis);
         values.put(DbContract.TaskColumns.DETAILS, task.mDetails);

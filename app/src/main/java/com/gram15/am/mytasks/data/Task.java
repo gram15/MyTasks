@@ -22,8 +22,6 @@ public class Task {
     public final String mDescription;
     //Marked if task is done
     public final boolean mIsComplete;
-    //Marked if task is priority
-    public final boolean mIsPriority;
     //Optional due date for the task
     public final long mDueDateMillis;
     //Task details
@@ -38,7 +36,6 @@ public class Task {
         this.mId = NO_ID; //Not set
         this.mDescription = description;
         this.mIsComplete = isComplete;
-        this.mIsPriority = isPriority;
         this.mDueDateMillis = dueDateMillis;
         this.mDetails = details;
         this.mPriorityLevel = priorityLevel;
@@ -51,7 +48,6 @@ public class Task {
         this.mId = id; //set id
         this.mDescription = description;
         this.mIsComplete = isComplete;
-        this.mIsPriority = isPriority;
         this.mDueDateMillis = dueDateMillis;
         this.mDetails = details;
         this.mPriorityLevel = priorityLevel;
@@ -71,7 +67,6 @@ public class Task {
         this.mId = getColumnLong(cursor, DbContract.TaskColumns._ID);
         this.mDescription = getColumnString(cursor, DbContract.TaskColumns.DESCRIPTION);
         this.mIsComplete = getColumnInt(cursor, DbContract.TaskColumns.IS_COMPLETE) == 1;
-        this.mIsPriority = getColumnInt(cursor, DbContract.TaskColumns.IS_PRIORITY) == 1;
         this.mDueDateMillis = getColumnLong(cursor, DbContract.TaskColumns.DUE_DATE);
         this.mDetails = getColumnString(cursor, DbContract.TaskColumns.DETAILS);
         this.mPriorityLevel = getColumnInt(cursor,DbContract.TaskColumns.PRIORITY_LEVEL);

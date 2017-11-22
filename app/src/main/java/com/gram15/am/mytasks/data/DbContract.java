@@ -17,8 +17,6 @@ public class DbContract {
         public static final String DESCRIPTION = "description";
         //Completed marker
         public static final String IS_COMPLETE = "is_complete";
-        //Priority marker
-        public static final String IS_PRIORITY = "is_priority";
         //Completion date (can be null)
         public static final String DUE_DATE = "due_date";
         //Task details
@@ -33,11 +31,11 @@ public class DbContract {
     /* Sort order constants */
     //Priority first, Completed last, the rest by date
     public static final String DEFAULT_SORT = String.format("%s ASC, %s DESC, %s ASC",
-            TaskColumns.IS_COMPLETE, TaskColumns.IS_PRIORITY, TaskColumns.DUE_DATE);
+            TaskColumns.IS_COMPLETE, TaskColumns.PRIORITY_LEVEL, TaskColumns.DUE_DATE);
 
     //Completed last, then by date, followed by priority
     public static final String DATE_SORT = String.format("%s ASC, %s ASC, %s DESC",
-            TaskColumns.IS_COMPLETE, TaskColumns.DUE_DATE, TaskColumns.IS_PRIORITY);
+            TaskColumns.IS_COMPLETE, TaskColumns.DUE_DATE, TaskColumns.PRIORITY_LEVEL);
 
     //Base content Uri for accessing the provider
     public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")

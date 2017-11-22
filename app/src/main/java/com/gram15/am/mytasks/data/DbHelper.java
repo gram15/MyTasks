@@ -18,12 +18,11 @@ public class DbHelper extends SQLiteOpenHelper {
         private static final int DATABASE_VERSION = 2;
 
         private static final String SQL_CREATE_TABLE_TASKS = String.format("CREATE TABLE %s"
-                        +" (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER,%s TEXT, %s INTEGER)",
+                        +" (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INTEGER, %s INTEGER,%s TEXT, %s INTEGER)",
                 DbContract.TABLE_TASKS,
                 DbContract.TaskColumns._ID,
                 DbContract.TaskColumns.DESCRIPTION,
                 DbContract.TaskColumns.IS_COMPLETE,
-                DbContract.TaskColumns.IS_PRIORITY,
                 DbContract.TaskColumns.DUE_DATE,
                 DbContract.TaskColumns.DETAILS,
                 DbContract.TaskColumns.PRIORITY_LEVEL
@@ -39,13 +38,13 @@ public class DbHelper extends SQLiteOpenHelper {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(SQL_CREATE_TABLE_TASKS);
-            loadDemoTask(db);
+            //loadDemoTask(db);
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL("DROP TABLE IF EXISTS " + DbContract.TABLE_TASKS);
-            updateTableTasks(db);
+            //updateTableTasks(db);
             onCreate(db);
         }
 
@@ -53,7 +52,6 @@ public class DbHelper extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put(DbContract.TaskColumns.DESCRIPTION, mContext.getResources().getString(R.string.demo_task_description));
             values.put(DbContract.TaskColumns.IS_COMPLETE, 0);
-            values.put(DbContract.TaskColumns.IS_PRIORITY, 1);
             values.put(DbContract.TaskColumns.DUE_DATE, Long.MAX_VALUE);
             values.put(DbContract.TaskColumns.DETAILS, mContext.getResources().getString(R.string.demo_task_details));
             values.put(DbContract.TaskColumns.PRIORITY_LEVEL, TaskUtils.Constants.PRIORITY_lOW);

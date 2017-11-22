@@ -68,9 +68,6 @@ public class DetailActivity extends AppCompatActivity implements
             if (savedInstanceState.containsKey(DbContract.TaskColumns.IS_COMPLETE) ) {
                 isComplete = savedInstanceState.getBoolean(DbContract.TaskColumns.IS_COMPLETE);
             }
-            if (savedInstanceState.containsKey(DbContract.TaskColumns.IS_PRIORITY) ) {
-                isPriority = savedInstanceState.getBoolean(DbContract.TaskColumns.IS_PRIORITY);
-            }
             if (savedInstanceState.containsKey(DbContract.TaskColumns.DETAILS) ) {
                 details = savedInstanceState.getString(DbContract.TaskColumns.DETAILS);
             }
@@ -215,7 +212,6 @@ public class DetailActivity extends AppCompatActivity implements
         outState.putString(DbContract.TaskColumns.DESCRIPTION, mCurrentTask.mDescription);
         outState.putLong(DbContract.TaskColumns.DUE_DATE, mCurrentTask.mDueDateMillis);
         outState.putBoolean(DbContract.TaskColumns.IS_COMPLETE, mCurrentTask.mIsComplete);
-        outState.putBoolean(DbContract.TaskColumns.IS_PRIORITY, mCurrentTask.mIsPriority);
         outState.putString(DbContract.TaskColumns.DETAILS, mCurrentTask.mDetails);
         outState.putInt(DbContract.TaskColumns.DETAILS, mCurrentTask.mPriorityLevel);
 
